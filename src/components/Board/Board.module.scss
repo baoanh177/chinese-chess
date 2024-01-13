@@ -1,0 +1,62 @@
+$board-padding: 38px;
+
+.board {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    border: $board-padding solid darkgoldenrod;
+    background-color: goldenrod;
+    user-select: none;
+    .turnLine {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: goldenrod;
+        height: calc(100% + $board-padding * 2);
+        width: 10px;
+        top: 0 - $board-padding;
+        left: -$board-padding - 10px;
+        &>.topLine, .botLine {
+            height: calc(50% - $board-padding / 2 - 10px);
+            opacity: .5;
+            background: #ddd;
+        }
+        .active {
+            box-shadow: -1px 0 10px 0 #ccc;
+            opacity: 1;
+        }
+    }
+    svg {
+        display: block;
+    }
+    img {
+        width: 50px;
+        height: 50px;
+    }
+    .destinations {
+        position: absolute;
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        inset: 0;
+        .destination {
+            position: absolute;
+            top: 60px;
+            border-radius: 50%;
+            opacity: 0.7;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: lightseagreen;
+            transition: width 0.2s, height 0.2s;
+            &:hover {
+                width: 22px;
+                height: 22px;
+                opacity: .9;
+                cursor: pointer;
+            }
+        }
+    }
+}
